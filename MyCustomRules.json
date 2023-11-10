@@ -240,9 +240,6 @@
 		"1868020298": "{\"popup_rules\":[{\"id\":\"upgrade_title\",\"action\":\"bn_cancel\"},{\"id\":\"开启&通知\",\"action\":\"不要福利\"},{\"id\":\"view_pager\",\"action\":\"iv_close\"},{\"id\":\"iv_logo\",\"action\":\"iv_close\"},{\"id\":\"viewpager\",\"action\":\"iv_home_delete\"},{\"id\":\"马上领取\",\"action\":\"暂不需要\"},{\"id\":\"view_flipper\",\"action\":\"close_iv\"}]}"
 	},
 	{
-		"is_main_switch_on": true
-	},
-	{
 		"1305029671": "{\"popup_rules\":[{\"id\":\"版本更新\",\"action\":\"关闭\"},{\"id\":\"签到成功\",\"action\":\"关闭\"}]}"
 	},
 	{
@@ -331,9 +328,6 @@
 	},
 	{
 		"-1447059102": "{\"popup_rules\":[{\"id\":\"img_ads\",\"action\":\"iv_close\"},{\"id\":\"float_ad_img\",\"action\":\"close_float_ad_img\"},{\"id\":\"video_view\",\"action\":\"iv_close\"}]}"
-	},
-	{
-		"hide_toast": true
 	},
 	{
 		"-357699061": "{\"popup_rules\":[{\"id\":\"青少年模式\",\"action\":\"知道了\"}]}"
@@ -583,9 +577,6 @@
 	},
 	{
 		"-1898417322": "{\"popup_rules\":[{\"id\":\"single_banner\",\"action\":\"close\"},{\"id\":\"=广告\",\"action\":\"closeGray\"}]}"
-	},
-	{
-		"foreground_service": true
 	},
 	{
 		"-733096426": "{\"popup_rules\":[{\"id\":\"更新Telegram\",\"action\":\"请稍后提醒我\"}]}"
@@ -871,9 +862,6 @@
 	},
 	{
 		"1314748790": "{\"popup_rules\":[{\"id\":\"update_dlg_title\",\"action\":\"tvCancel\"},{\"id\":\"开启消息通知权限\",\"action\":\"暂不开启\"},{\"id\":\"index_drag_ad_iv\",\"action\":\"index_drag_ad_iv_close\"},{\"id\":\"banner\",\"action\":\"close_banner\"}]}"
-	},
-	{
-		"exclude_from_recents": true
 	},
 	{
 		"-833566134": "{\"popup_rules\":[{\"id\":\"发现新版本\",\"action\":\"下次再说\"}]}"
