@@ -273,7 +273,7 @@
 		"-1781124388": "{\"popup_rules\":[{\"id\":\"tv_notify_title\",\"action\":\"iv_close\"},{\"id\":\"签到&天&获得&车币\",\"action\":\"GLOBAL_ACTION_BACK\"},{\"id\":\"开启消息推送\",\"action\":\"iv_close\"}]}"
 	},
 	{
-		"-612834190": "{\"popup_rules\":[{\"id\":\"关闭弹框按钮\",\"action\":\"关闭弹框按钮\"},]}"
+		"-612834190": "{\"popup_rules\":[{\"id\":\"关闭弹框按钮\",\"action\":\"关闭弹框按钮\"}]}"
 	},
 	{
 		"-84768776": "{\"popup_rules\":[{\"id\":\"立即提现\",\"action\":\"GLOBAL_ACTION_BACK\"},{\"id\":\"马上领取\",\"action\":\"残忍退出\"}]}"
