@@ -19,30 +19,8 @@ function loadJSON() {
       return response.text();
     }),
   ]).then(([mainData, customData]) => {
-    let object1 = JSON.parse(mainData).reduce((acc, item) => {
-        let newItem = {};
-        for (let key in item) {
-          if (typeof item[key] === 'string') {
-            newItem[key] = fixTrailingComma(item[key]);
-          }
-        }
-        if (Object.keys(newItem).length > 0) {
-          acc.push(newItem);
-        }
-        return acc;
-      }, []),
-      object2 = JSON.parse(customData).reduce((acc, item) => {
-        let newItem = {};
-        for (let key in item) {
-          if (typeof item[key] === 'string') {
-            newItem[key] = fixTrailingComma(item[key]);
-          }
-        }
-        if (Object.keys(newItem).length > 0) {
-          acc.push(newItem);
-        }
-        return acc;
-      }, []);
+    let object1 = reconstruction(JSON.parse(mainData)),
+      object2 = reconstruction(JSON.parse(customData));
 
     const lastData = mergeObjects(object1, object2),
       data = JSON.stringify(lastData);
@@ -52,35 +30,46 @@ function loadJSON() {
   });
 }
 
-function mergeObjects(obj1, obj2) {
-  // 使用深度复制以避免修改原始对象
-  let result = JSON.parse(JSON.stringify(obj1));
+function mergeObjects(baseObj, newObj) {
+  // Iterate through each object in the base array
+  for (let baseItem of baseObj) {
+    const baseId = Object.keys(baseItem)[0];
+    const baseRules = JSON.parse(baseItem[baseId]).popup_rules;
 
-  // 遍历第二个对象
-  obj2.forEach((item2) => {
-    // 获取第二个对象的键
-    let key2 = Object.keys(item2)[0];
+    // Find the corresponding object in the new array
+    const newObjItem = newObj.find((item) => Object.keys(item)[0] === baseId);
 
-    // 如果第一个对象中已经存在相同的键，则将popup_rules合并
-    if (result.some((item1) => Object.keys(item1)[0] === key2)) {
-      let index = result.findIndex((item1) => Object.keys(item1)[0] === key2);
-      let rules1 = JSON.parse(result[index][key2]);
-      let rules2 = JSON.parse(item2[key2]);
+    if (newObjItem) {
+      const newRules = JSON.parse(newObjItem[baseId]).popup_rules;
 
-      // 合并popup_rules
-      rules1.popup_rules = rules1.popup_rules.concat(rules2.popup_rules);
+      // Merge rules based on "id" content
+      const mergedRules = baseRules.map((baseRule) => {
+        const newRule = newRules.find((rule) => rule.id === baseRule.id);
+        return newRule ? newRule : baseRule;
+      });
 
-      // 更新合并后的值
-      result[index][key2] = JSON.stringify(rules1);
-    } else {
-      // 如果第一个对象中不存在相同的键，则直接将第二个对象添加到结果中
-      result.push(item2);
+      // Update the base object with merged rules
+      baseItem[baseId] = JSON.stringify({ popup_rules: mergedRules });
     }
-  });
+  }
 
-  return result;
+  return baseObj;
 }
 
+function reconstruction(arr) {
+  return arr.reduce((acc, item) => {
+    let newItem = {};
+    for (let key in item) {
+      if (typeof item[key] === 'string') {
+        newItem[key] = fixTrailingComma(item[key]);
+      }
+    }
+    if (Object.keys(newItem).length > 0) {
+      acc.push(newItem);
+    }
+    return acc;
+  }, []);
+}
 // 修复JSON字符串末尾逗号的问题
 function fixTrailingComma(jsonString) {
   // 移除末尾逗号
