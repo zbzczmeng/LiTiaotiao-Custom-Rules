@@ -153,7 +153,7 @@
 		"1000776385": "{\"popup_rules\":[{\"id\":\"update_cancel\",\"action\":\"update_cancel\"},{\"id\":\"iv_body\",\"action\":\"iv_close\"},{\"id\":\"img_ad\",\"action\":\"img_ad_close\"}]}"
 	},
 	{
-		"1254578009": "{\"popup_rules\":[{\"id\":\"立即升级\",\"action\":\"iv_close\"},{\"id\":\"版本升级\",\"action\":\"取消\"},{\"id\":\"msgbox_popup_clear\",\"action\":\"msgbox_popup_clear\"}]}"
+		"1254578009": "{\"popup_rules\":[{\"id\":\"立即升级\",\"action\":\"iv_close\"},{\"id\":\"版本升级\",\"action\":\"取消\"},{\"id\":\"msgbox_popup_clear\",\"action\":\"msgbox_popup_clear\"},{\"id\":\"-定位权限\",\"action\":\"暂不开启\"}]}"
 	},
 	{
 		"1662102643": "{\"popup_rules\":[{\"id\":\"更新提示\",\"action\":\"取消\"},{\"id\":\"应用升级提醒\",\"action\":\"取消\"}]}"
@@ -267,7 +267,7 @@
 		"-1781124388": "{\"popup_rules\":[{\"id\":\"tv_notify_title\",\"action\":\"iv_close\"},{\"id\":\"签到&天&获得&车币\",\"action\":\"GLOBAL_ACTION_BACK\"},{\"id\":\"开启消息推送\",\"action\":\"iv_close\"}]}"
 	},
 	{
-		"-612834190": "{\"popup_rules\":[{\"id\":\"关闭弹框按钮\",\"action\":\"关闭弹框按钮\"}]}"
+		"-612834190": "{\"popup_rules\":[{\"id\":\"关闭弹框按钮\",\"action\":\"关闭弹框按钮\"},]}"
 	},
 	{
 		"-84768776": "{\"popup_rules\":[{\"id\":\"立即提现\",\"action\":\"GLOBAL_ACTION_BACK\"},{\"id\":\"马上领取\",\"action\":\"残忍退出\"}]}"
@@ -882,9 +882,6 @@
 		"-103523392": "{\"popup_rules\":[{\"id\":\"青少年模式\",\"action\":\"我知道了\"},{\"id\":\"进入直播间热聊\",\"action\":\"稍后再说\"},{\"id\":\"开启地理位置权限\",\"action\":\"拒绝\"}]}"
 	},
 	{
-		"ltt_suggestions_a": false
-	},
-	{
 		"1268902986": "{\"popup_rules\":[{\"id\":\"系统位置服务未开启\",\"action\":\"iv_image_close\"}]}"
 	},
 	{
@@ -933,7 +930,7 @@
 		"2130042610": "{\"popup_rules\":[{\"id\":\"青少年模式\",\"action\":\"我知道了\"}]}"
 	},
 	{
-		"2049668591": "{\"popup_rules\":[{\"id\":\"closeButtonIcon\",\"action\":\"closeButtonIcon\"},{\"id\":\"推荐广告\",\"action\":\"关闭\"}]}"
+		"2049668591": "{\"popup_rules\":[{\"id\":\"closeButtonIcon\",\"action\":\"closeButtonIcon\"},{\"id\":\"推荐广告\",\"action\":\"关闭\"},{\"id\":\"-其他设备登录\",\"action\":\"好的\"}]}"
 	},
 	{
 		"132785423": "{\"popup_rules\":[{\"id\":\"发现新版本\",\"action\":\"iv_cancel\"},{\"id\":\"开启&通知\",\"action\":\"暂不开启\"},{\"id\":\"签到成功\",\"action\":\"iv_close\"}]}"
