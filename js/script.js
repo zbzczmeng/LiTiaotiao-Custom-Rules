@@ -22,38 +22,51 @@ function loadJSON() {
     let object1 = reconstruction(JSON.parse(mainData)),
       object2 = reconstruction(JSON.parse(customData));
 
+    console.log(`网络规则：${object1.length}条/${Math.round(mainData.length / 1024)}KB，自定义规则：${object2.length}条/${Math.round(customData.length / 1024)}KB`);
     const lastData = mergeObjects(object1, object2),
       data = JSON.stringify(lastData);
-    var size = Math.round(data.length / 1024);
-    console.log(`缓存数据：${ruleName}，大小：${size}KB`);
+    console.log(`合并后大小：${Math.round(data.length / 1024)}KB`);
     document.getElementById('json-text').value = data;
   });
 }
 
 function mergeObjects(baseObj, newObj) {
   // Iterate through each object in the base array
-  for (let baseItem of baseObj) {
-    const baseId = Object.keys(baseItem)[0];
-    const baseRules = JSON.parse(baseItem[baseId]).popup_rules;
+  const result = [];
+  for (let newItem of newObj) {
+    const newId = Object.keys(newItem)[0];
+    const newRules = JSON.parse(newItem[newId]).popup_rules;
 
     // Find the corresponding object in the new array
-    const newObjItem = newObj.find((item) => Object.keys(item)[0] === baseId);
+    const baseObjItem = baseObj.find((item) => Object.keys(item)[0] === newId);
 
-    if (newObjItem) {
-      const newRules = JSON.parse(newObjItem[baseId]).popup_rules;
+    if (baseObjItem) {
+      const baseRules = JSON.parse(baseObjItem[newId]).popup_rules;
+      const baseIds = baseRules.map((item) => item.id);
+      const newFilterRules = newRules.filter((item) => !baseIds.includes(item.id));
+      const mergedRules = [...baseRules, ...newFilterRules];
 
-      // Merge rules based on "id" content
-      const mergedRules = baseRules.map((baseRule) => {
-        const newRule = newRules.find((rule) => rule.id === baseRule.id);
-        return newRule ? newRule : baseRule;
-      });
-
-      // Update the base object with merged rules
-      baseItem[baseId] = JSON.stringify({ popup_rules: mergedRules });
+      result.push({ [newId]: JSON.stringify({ popup_rules: mergedRules }) });
+    } else {
+      result.push({ [newId]: JSON.stringify({ popup_rules: newRules }) });
     }
   }
 
-  return baseObj;
+  return result;
+}
+
+// 去除相同内容的方法
+function removeDuplicates(array) {
+  // 创建一个空对象用于存储唯一的元素
+  var uniqueMap = {};
+
+  // 过滤数组，仅保留第一次出现的元素
+  var uniqueArray = array.filter(function (item) {
+    var key = JSON.stringify(item);
+    return uniqueMap.hasOwnProperty(key) ? false : (uniqueMap[key] = true);
+  });
+
+  return uniqueArray;
 }
 
 function reconstruction(arr) {
